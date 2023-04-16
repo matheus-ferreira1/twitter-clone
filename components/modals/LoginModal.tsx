@@ -1,4 +1,6 @@
 import { useCallback, useState } from "react";
+import { toast } from "react-hot-toast";
+import { signIn } from "next-auth/react";
 
 import useLoginModal from "@/hooks/useLoginModal";
 import useRegisterModal from "@/hooks/useRegisterModal";
@@ -18,7 +20,12 @@ const LoginModal = () => {
     try {
       setIsLoading(true);
 
-      //soon to be implemented login functionality
+      await signIn("credentials", {
+        email,
+        password,
+      });
+
+      toast.success("Logged in");
 
       loginModal.onClose();
     } catch (error) {
