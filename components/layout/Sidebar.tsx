@@ -23,6 +23,7 @@ const Sidebar = () => {
       href: "/notifications",
       icon: BsBellFill,
       auth: true,
+      alert: currentUser?.hasNotification,
     },
     {
       label: "Profile",
@@ -33,7 +34,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className="col-span-1 h-full pr-4 md:pr-6">
+    <aside className="col-span-1 h-full pr-4 md:pr-6">
       <div className="flex flex-col items-end">
         <div className="space-y-2 lg:w-[230px]">
           <SidebarLogo />
@@ -44,6 +45,7 @@ const Sidebar = () => {
               label={item.label}
               icon={item.icon}
               auth={item.auth}
+              alert={item.alert}
             />
           ))}
           {currentUser && (
@@ -56,7 +58,7 @@ const Sidebar = () => {
           <SidebarTweetButton />
         </div>
       </div>
-    </div>
+    </aside>
   );
 };
 
